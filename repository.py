@@ -56,9 +56,7 @@ class DataRepositories(Enum):
 
 
 def get_data_repository(repository_name: str, repo_settings: dict) -> Repository:
-    repository_class: Optional[Type[Repository]] = DataRepositories.get(repository_name)
-    if repository_class is None:
-        raise RepositoryNotFoundError
+    repository_class: Type[Repository] = DataRepositories.get(repository_name)
 
     repository: Repository = repository_class(**repo_settings)
 
